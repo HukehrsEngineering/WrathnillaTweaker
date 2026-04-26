@@ -33,22 +33,21 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore WrathnillaTweaker.sln
 
-      - name: Publish (Release, win-x64, self-contained)
+      - name: Publish self-contained (includes .NET runtime)
         run: |
           $ver = "${{ github.event.inputs.version }}".TrimStart('v')
-          dotnet publish WrathnillaTweaker/WrathnillaTweaker.csproj `
-            -c Release `
-            -r win-x64 `
-            --self-contained true `
-            /p:Version=$ver `
-            /p:AssemblyVersion=$ver `
-            /p:FileVersion=$ver `
-            -o ./publish
+          dotnet publish WrathnillaTweaker/WrathnillaTweaker.csproj -c Release -r win-x64 /p:SelfContained=true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:Version=$ver /p:AssemblyVersion=$ver /p:FileVersion=$ver -o ./publish-scd
 
-      - name: Zip build output
+      - name: Publish framework-dependent (requires .NET 10 runtime)
         run: |
-          $version = "${{ github.event.inputs.version }}"
-          Compress-Archive -Path ./publish/* -DestinationPath "WrathnillaTweaker-$version-win-x64.zip"
+          $ver = "${{ github.event.inputs.version }}".TrimStart('v')
+          dotnet publish WrathnillaTweaker/WrathnillaTweaker.csproj -c Release -r win-x64 /p:SelfContained=false /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:Version=$ver /p:AssemblyVersion=$ver /p:FileVersion=$ver -o ./publish-fdd
+
+      - name: Rename artifacts
+        run: |
+          $ver = "${{ github.event.inputs.version }}"
+          Move-Item ./publish-scd/WrathnillaTweaker.exe "WrathnillaTweaker-$ver-win-x64-standalone.exe"
+          Move-Item ./publish-fdd/WrathnillaTweaker.exe "WrathnillaTweaker-$ver-win-x64-requires-dotnet10.exe"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -57,4 +56,13 @@ jobs:
           name: ${{ github.event.inputs.release_name || github.event.inputs.version }}
           prerelease: ${{ github.event.inputs.prerelease }}
           generate_release_notes: true
-          files: WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64.zip
+          body: |
+            ## Downloads
+
+            | File | Description |
+            |------|-------------|
+            | `WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64-standalone.exe` | Self-contained — no installation required, runs on any Windows x64 machine |
+            | `WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64-requires-dotnet10.exe` | Smaller download — requires the [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0) to be installed |
+          files: |
+            WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64-standalone.exe
+            WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64-requires-dotnet10.exe
