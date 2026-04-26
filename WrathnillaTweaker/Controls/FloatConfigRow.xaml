@@ -12,7 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0"
@@ -31,11 +31,23 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBlock Grid.Column="2"
-                   Text="{Binding Help, ElementName=Root}"
-                   Foreground="Gray"
-                   FontSize="11"
-                   TextWrapping="Wrap"
-                   VerticalAlignment="Center"/>
+        <ToggleButton x:Name="HelpBtn"
+                      Grid.Column="2"
+                      Content="?"
+                      Width="20" Height="20"
+                      Padding="0" FontSize="11"
+                      VerticalAlignment="Center"/>
+        <Popup Grid.Column="2"
+               IsOpen="{Binding IsChecked, ElementName=HelpBtn}"
+               PlacementTarget="{Binding ElementName=HelpBtn}"
+               Placement="Bottom"
+               StaysOpen="False"
+               AllowsTransparency="True">
+            <Border Background="White" BorderBrush="#AAAAAA" BorderThickness="1"
+                    Padding="8,6" MaxWidth="300">
+                <TextBlock Text="{Binding Help, ElementName=Root}"
+                           TextWrapping="Wrap" FontSize="11"/>
+            </Border>
+        </Popup>
     </Grid>
 </UserControl>

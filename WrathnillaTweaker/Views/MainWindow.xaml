@@ -89,15 +89,14 @@
                     <!-- Experience Rates -->
                     <GroupBox Header="Experience Rates" Margin="0,0,0,12">
                         <StackPanel Margin="4,4,4,8">
-                            <TextBlock TextWrapping="Wrap">Vanilla like: These values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla.</TextBlock>
                             <ctrl:FloatConfigRow
                                 Label="Kill"
                                 Value="{Binding Config.ExperienceConfig.Kill}"
-                                Help="Experience rate multiplier for killing mobs&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82"/>
+                                Help="Experience rate multiplier for killing mobs&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                             <ctrl:FloatConfigRow
                                 Label="Quest"
                                 Value="{Binding Config.ExperienceConfig.Quest}"
-                                Help="Experience rate multiplier for quest completion&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82"/>
+                                Help="Experience rate multiplier for quest completion&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                             <ctrl:FloatConfigRow
                                 Label="Dungeon Finder"
                                 Value="{Binding Config.ExperienceConfig.QuestDungeonFinder}"
