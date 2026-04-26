@@ -15,8 +15,9 @@ public class FloatToStringConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (float.TryParse(value?.ToString(), NumberStyles.Float, CultureInfo.InvariantCulture, out var result))
+        var input = value?.ToString()?.Replace(',', '.');
+        if (float.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out var result))
             return result;
-        throw new FormatException($"'{value}' is not a valid decimal number.");
+        return Binding.DoNothing;
     }
 }

@@ -26,8 +26,11 @@
             <TextBox.Text>
                 <Binding Path="Value" ElementName="Root"
                          Converter="{StaticResource FloatConv}"
-                         UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnExceptions="True"/>
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <conv:FloatValidationRule ValidationStep="RawProposedValue"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox.Text>
         </TextBox>
 
