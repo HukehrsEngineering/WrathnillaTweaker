@@ -33,12 +33,16 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore WrathnillaTweaker.sln
 
-      - name: Publish (Release, win-x64, framework-dependent)
+      - name: Publish (Release, win-x64, self-contained)
         run: |
+          $ver = "${{ github.event.inputs.version }}".TrimStart('v')
           dotnet publish WrathnillaTweaker/WrathnillaTweaker.csproj `
             -c Release `
             -r win-x64 `
             --self-contained true `
+            /p:Version=$ver `
+            /p:AssemblyVersion=$ver `
+            /p:FileVersion=$ver `
             -o ./publish
 
       - name: Zip build output
