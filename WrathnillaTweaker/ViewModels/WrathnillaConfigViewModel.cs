@@ -21,7 +21,15 @@ public partial class WrathnillaConfigViewModel : ObservableObject
     [ObservableProperty]
     private string? _message;
 
+    private int _validationErrorCount;
+
     public bool IsConfigLoaded => Config != null;
+
+    public void AdjustValidationErrorCount(int delta)
+    {
+        _validationErrorCount += delta;
+        SaveCommand.NotifyCanExecuteChanged();
+    }
 
     public string ConfigFileName =>
         ConfigFilePath != null ? Path.GetFileName(ConfigFilePath) : "WrathnillaTweaker";
@@ -64,7 +72,9 @@ public partial class WrathnillaConfigViewModel : ObservableObject
         }
     }
 
-    [RelayCommand(CanExecute = nameof(IsConfigLoaded))]
+    private bool CanSave() => IsConfigLoaded && _validationErrorCount == 0;
+
+    [RelayCommand(CanExecute = nameof(CanSave))]
     private void Save()
     {
         if (ConfigFilePath == null || Config == null) return;

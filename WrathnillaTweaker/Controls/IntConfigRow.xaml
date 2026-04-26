@@ -21,7 +21,8 @@
             <TextBox.Text>
                 <Binding Path="Value" ElementName="Root"
                          UpdateSourceTrigger="PropertyChanged"
-                         ValidatesOnExceptions="True"/>
+                         ValidatesOnExceptions="True"
+                         NotifyOnValidationError="True"/>
             </TextBox.Text>
         </TextBox>
 

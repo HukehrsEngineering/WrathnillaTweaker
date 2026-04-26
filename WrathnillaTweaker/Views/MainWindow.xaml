@@ -54,7 +54,8 @@
 
             <!-- Config editor (shown when config is loaded) -->
             <ScrollViewer VerticalScrollBarVisibility="Auto"
-                          Visibility="{Binding IsConfigLoaded, Converter={StaticResource BoolToVis}}">
+                          Visibility="{Binding IsConfigLoaded, Converter={StaticResource BoolToVis}}"
+                          Validation.Error="OnValidationError">
                 <StackPanel Margin="16" MaxWidth="820">
 
                     <!-- Skills -->
