@@ -10,9 +10,6 @@ public class ExperienceConfig
     [PropertyName("Rate.XP.Quest")]
     public float Quest { get; set; }
 
-    [PropertyName("Rate.XP.Quest.DF")]
-    public float QuestDungeonFinder { get; set; }
-
     [PropertyName("Rate.XP.Explore")]
     public float Exploration { get; set; }
 

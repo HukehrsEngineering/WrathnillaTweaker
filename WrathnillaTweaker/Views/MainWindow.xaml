@@ -99,17 +99,13 @@
                                 Value="{Binding Config.ExperienceConfig.Quest}"
                                 Help="Experience rate multiplier for quest completion&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                             <ctrl:FloatConfigRow
-                                Label="Dungeon Finder"
-                                Value="{Binding Config.ExperienceConfig.QuestDungeonFinder}"
-                                Help="Experience rate multiplier for Dungeon Finder quests&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow
                                 Label="Exploration"
                                 Value="{Binding Config.ExperienceConfig.Exploration}"
-                                Help="Experience rate multiplier for discovering new areas&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
+                                Help="Experience rate multiplier for discovering new areas&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                             <ctrl:FloatConfigRow
                                 Label="Pet"
                                 Value="{Binding Config.ExperienceConfig.Pet}"
-                                Help="Experience rate multiplier for pet leveling&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
+                                Help="Experience rate multiplier for pet leveling&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                         </StackPanel>
                     </GroupBox>
 
