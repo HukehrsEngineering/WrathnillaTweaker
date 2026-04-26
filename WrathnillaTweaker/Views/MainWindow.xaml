@@ -63,22 +63,22 @@
                             <ctrl:IntConfigRow
                                 Label="Max Trade Skills"
                                 Value="{Binding Config.SkillConfig.MaxTradeSkills}"
-                                Help="Maximum number of primary trade skills a character can learn&#10;Wrathnilla default: 11&#10;WotLK default: 2"/>
+                                Help="Maximum number of primary trade skills a character can learn&#10;Wrathnilla default: 11&#10;WotLK default: 2&#10;Rudegoblins Suggestion: 3 (This allows you to have the most relevant supplemental gathering skill for you primary crafting profession)"/>
 
                             <TextBlock Text="Skill Gains" Style="{StaticResource SectionLabel}"/>
 
                             <ctrl:IntConfigRow
                                 Label="Crafting"
                                 Value="{Binding Config.SkillConfig.SkillGains.Crafting}"
-                                Help="Skill experience gained per crafting action&#10;Wrathnilla default: 5&#10;WotLK default: 1"/>
+                                Help="Skill experience gained per crafting action&#10;Wrathnilla default: 5&#10;WotLK default: 1&#10;Rudegoblins Suggestion: 2"/>
+                            <ctrl:IntConfigRow
+                                Label="Gathering"
+                                Value="{Binding Config.SkillConfig.SkillGains.Gathering}"
+                                Help="Skill experience gained per gathering action&#10;Wrathnilla default: 5&#10;WotLK default: 1&#10;Rudegoblins Suggestion: 2"/>
                             <ctrl:IntConfigRow
                                 Label="Defense"
                                 Value="{Binding Config.SkillConfig.SkillGains.Defense}"
                                 Help="Skill experience gained when taking damage&#10;Wrathnilla default: 5&#10;WotLK default: 1"/>
-                            <ctrl:IntConfigRow
-                                Label="Gathering"
-                                Value="{Binding Config.SkillConfig.SkillGains.Gathering}"
-                                Help="Skill experience gained per gathering action&#10;Wrathnilla default: 5&#10;WotLK default: 1"/>
                             <ctrl:IntConfigRow
                                 Label="Weapon"
                                 Value="{Binding Config.SkillConfig.SkillGains.Weapon}"
@@ -89,14 +89,15 @@
                     <!-- Experience Rates -->
                     <GroupBox Header="Experience Rates" Margin="0,0,0,12">
                         <StackPanel Margin="4,4,4,8">
+                            <TextBlock TextWrapping="Wrap">Vanilla like: These values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla.</TextBlock>
                             <ctrl:FloatConfigRow
                                 Label="Kill"
                                 Value="{Binding Config.ExperienceConfig.Kill}"
-                                Help="Experience rate multiplier for killing mobs&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
+                                Help="Experience rate multiplier for killing mobs&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82"/>
                             <ctrl:FloatConfigRow
                                 Label="Quest"
                                 Value="{Binding Config.ExperienceConfig.Quest}"
-                                Help="Experience rate multiplier for quest completion&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
+                                Help="Experience rate multiplier for quest completion&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82"/>
                             <ctrl:FloatConfigRow
                                 Label="Dungeon Finder"
                                 Value="{Binding Config.ExperienceConfig.QuestDungeonFinder}"

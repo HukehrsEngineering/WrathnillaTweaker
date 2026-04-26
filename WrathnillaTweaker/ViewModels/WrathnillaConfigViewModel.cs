@@ -43,7 +43,7 @@ public partial class WrathnillaConfigViewModel : ObservableObject
         var dialog = new OpenFileDialog
         {
             Title = "Select your Wrathnilla Server's gameplay.conf file (SERVER\\configs\\gameplay.conf)",
-            Filter = "Config files (*.conf)|*.conf|All files (*.*)|*.*",
+            Filter = "Gameplay Config (gameplay.conf)|gameplay.conf",
         };
         if (dialog.ShowDialog() == true)
             LoadFile(dialog.FileName);
