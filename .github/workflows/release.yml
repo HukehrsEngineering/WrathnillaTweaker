@@ -1,0 +1,56 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version tag (e.g. v1.2.0)'
+        required: true
+        default: 'v1.0.0'
+      release_name:
+        description: 'Release title (defaults to version tag if blank)'
+        required: false
+      prerelease:
+        description: 'Mark as pre-release'
+        type: boolean
+        default: false
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
+      - name: Restore dependencies
+        run: dotnet restore WrathnillaTweaker.sln
+
+      - name: Publish (Release, win-x64, framework-dependent)
+        run: |
+          dotnet publish WrathnillaTweaker/WrathnillaTweaker.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -o ./publish
+
+      - name: Zip build output
+        run: |
+          $version = "${{ github.event.inputs.version }}"
+          Compress-Archive -Path ./publish/* -DestinationPath "WrathnillaTweaker-$version-win-x64.zip"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          name: ${{ github.event.inputs.release_name || github.event.inputs.version }}
+          prerelease: ${{ github.event.inputs.prerelease }}
+          generate_release_notes: true
+          files: WrathnillaTweaker-${{ github.event.inputs.version }}-win-x64.zip
