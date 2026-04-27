@@ -108,69 +108,6 @@
                                 Help="Experience rate multiplier for pet leveling&#10;Wrathnilla default: 1&#10;WotLK default: 1&#10;Vanilla Like: 0.82 (This values correct for the reduced experience required with Wrath of the Lich King. It will result in a slower leveling speed that should match Vanilla)"/>
                         </StackPanel>
                     </GroupBox>
-
-                    <!-- Mob Stats -->
-                    <GroupBox Header="Mob Stats" Margin="0,0,0,12">
-                        <StackPanel Margin="4,4,4,8">
-
-                            <TextBlock Text="Damage" Style="{StaticResource SectionLabel}"/>
-                            <ctrl:FloatConfigRow Label="Normal"
-                                Value="{Binding Config.DamageConfig.Damage.Normal}"
-                                Help="Normal mob physical damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Elite"
-                                Value="{Binding Config.DamageConfig.Damage.Elite}"
-                                Help="Elite mob physical damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare"
-                                Value="{Binding Config.DamageConfig.Damage.Rare}"
-                                Help="Rare mob physical damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare Elite"
-                                Value="{Binding Config.DamageConfig.Damage.RareElite}"
-                                Help="Rare elite mob physical damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="World Boss"
-                                Value="{Binding Config.DamageConfig.Damage.WorldBoss}"
-                                Help="World boss physical damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-
-                            <Separator Margin="0,8"/>
-
-                            <TextBlock Text="Spell Damage" Style="{StaticResource SectionLabel}"/>
-                            <ctrl:FloatConfigRow Label="Normal"
-                                Value="{Binding Config.DamageConfig.SpellDamage.Normal}"
-                                Help="Normal mob spell damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Elite"
-                                Value="{Binding Config.DamageConfig.SpellDamage.Elite}"
-                                Help="Elite mob spell damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare"
-                                Value="{Binding Config.DamageConfig.SpellDamage.Rare}"
-                                Help="Rare mob spell damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare Elite"
-                                Value="{Binding Config.DamageConfig.SpellDamage.RareElite}"
-                                Help="Rare elite mob spell damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="World Boss"
-                                Value="{Binding Config.DamageConfig.SpellDamage.WorldBoss}"
-                                Help="World boss spell damage multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-
-                            <Separator Margin="0,8"/>
-
-                            <TextBlock Text="Health" Style="{StaticResource SectionLabel}"/>
-                            <ctrl:FloatConfigRow Label="Normal"
-                                Value="{Binding Config.DamageConfig.Health.Normal}"
-                                Help="Normal mob maximum HP multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Elite"
-                                Value="{Binding Config.DamageConfig.Health.Elite}"
-                                Help="Elite mob maximum HP multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare"
-                                Value="{Binding Config.DamageConfig.Health.Rare}"
-                                Help="Rare mob maximum HP multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="Rare Elite"
-                                Value="{Binding Config.DamageConfig.Health.RareElite}"
-                                Help="Rare elite mob maximum HP multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-                            <ctrl:FloatConfigRow Label="World Boss"
-                                Value="{Binding Config.DamageConfig.Health.WorldBoss}"
-                                Help="World boss maximum HP multiplier&#10;Wrathnilla default: 1&#10;WotLK default: 1"/>
-
-                        </StackPanel>
-                    </GroupBox>
-
                 </StackPanel>
             </ScrollViewer>
 
